@@ -4,16 +4,28 @@ package com.jrutil;
  * A utility class used for printing colors.
  */
 public class ColorPrinter {
-
+    /**
+     * A {@link LockableHashMap} that contains all of the formats, and is locked.
+     *
+     * Do note that <code>italic</code> and <code>strike</code> may not  be available on all systems. One such system would be IntelliJ.
+     *
+     */
     public static final LockableHashMap<String, Integer> formatMap = new LockableHashMap<>();
 
+    /**
+     * The template for the color output in linux.
+     */
     public static final String TEMPLATE = "\033[";
 
     static {
         // Misc
         formatMap.put("reset", 0);
         formatMap.put("bold", 1);
+        formatMap.put("nobold", 21);
         formatMap.put("underline", 4);
+        formatMap.put("nounderline", 24);
+        formatMap.put("italic", 3);
+        formatMap.put("strike", 9);
         // Standard colors
         formatMap.put("black", 30);
         formatMap.put("red", 31);
@@ -70,7 +82,9 @@ public class ColorPrinter {
      * <li>white</li>
      * <li>reset</li>
      * <li>bold</li>
+     * <li>nobold</li>
      * <li>underline</li>
+     * <li>nounderline</li>
      * <li>bgblack</li>
      * <li>bgred</li>
      * <li>bggreen</li>

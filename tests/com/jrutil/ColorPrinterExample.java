@@ -7,6 +7,7 @@ public class ColorPrinterExample {
         ColorPrinter.println("%yellow%Not so bold...");
         ColorPrinter.println("%bold%%green%Success!");
         ColorPrinter.println("%bgiblack%%yellow%I am a code block!");
+        ColorPrinter.println("%italic%Italic words...");
     }
 
 }
