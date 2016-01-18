@@ -1,8 +1,8 @@
 package com.jrutil.examples;
 
-public class DummyClass<T, V> {
+public class DummyClass {
 
-    public void print(String toPrint, int i, boolean force, T a) {
+    public void print(String toPrint) {
         System.out.println(toPrint);
     }
 

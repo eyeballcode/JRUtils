@@ -1,5 +1,6 @@
 package com.jrutil.reflect;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -11,8 +12,11 @@ import java.lang.reflect.Modifier;
 public class ReflectedMethod {
     private final Method underlyingMethod;
 
-    protected ReflectedMethod(Method method) {
+    private final ReflectedClass ownerClass;
+
+    protected ReflectedMethod(Method method, ReflectedClass reflectedClass) {
         underlyingMethod = method;
+        ownerClass = reflectedClass;
     }
 
     /**
@@ -58,6 +62,10 @@ public class ReflectedMethod {
         else
             out.append(BytecodeHelper.getNameForType(returnT.getName()));
         return out.toString();
+    }
+
+    public Object invoke(Object instance, Object... args) throws InvocationTargetException, IllegalAccessException {
+        return underlyingMethod.invoke(instance, args);
     }
 
 }
