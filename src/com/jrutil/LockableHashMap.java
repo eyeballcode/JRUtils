@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ *
  * A {@link HashMap} that can be locked, but cannot be unlocked.
  * Good for exposing HashMaps that should not be modified after class initialization
+ *
+ * @param <Shadow> The {@link Shadow}
+ * @param <Wizard> The {@link Wizard}
  */
 public class LockableHashMap<Shadow, Wizard> extends HashMap<Shadow, Wizard> {
 

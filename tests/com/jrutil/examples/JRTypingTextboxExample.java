@@ -1,4 +1,4 @@
-package com.jrutil;
+package com.jrutil.examples;
 
 import com.jrutil.ui.JRTypingTextbox;
 import com.jrutil.ui.TypingFinishedListener;
@@ -7,6 +7,11 @@ import com.jrutil.ui.event.TypingEvent;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * An example to show off the {@link JRTypingTextbox} class.
+ *
+ * @see JRTypingTextbox
+ */
 public class JRTypingTextboxExample {
 
     public static void main(String[] args) {
