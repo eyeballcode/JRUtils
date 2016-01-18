@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class TerminalHelperExample {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("TerminalHelper#read variants");
         System.out.println("    " + TerminalHelper.readInt("Int: "));
         System.out.println("    " + TerminalHelper.readLong("Long: "));
@@ -21,10 +21,11 @@ public class TerminalHelperExample {
         try {
             System.out.println("    " + TerminalHelper.readPassword("Password: "));
         } catch (NullPointerException ignored) {
+            System.out.println();
             System.out.println("    Password reading not supported!");
         }
         System.out.println("Terminal / Console width: ");
-        System.out.println("    " + TerminalHelper.getTerminalWidth());
+            System.out.println("    " + TerminalHelper.getTerminalWidth());
     }
 
 }
