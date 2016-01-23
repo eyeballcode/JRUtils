@@ -1,16 +1,9 @@
 package com.jrutil;
 
-import sun.awt.ComponentFactory;
-
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.awt.peer.RobotPeer;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public class AWTHelper {
 
@@ -20,7 +13,6 @@ public class AWTHelper {
         try {
             robot = new Robot();
         } catch (AWTException ignored) {
-            ;
         }
     }
 
