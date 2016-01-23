@@ -3,6 +3,9 @@ package com.jrutil;
 import java.security.SecureRandom;
 import java.util.Random;
 
+/**
+ * A class for generating random numbers
+ */
 public class RandomGen {
     /**
      * Generates a random int in the range provided.

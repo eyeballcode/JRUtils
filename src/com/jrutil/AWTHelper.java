@@ -5,6 +5,11 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * A class for interacting with the system using UI events. Not restricted to only Java {@link javax.swing.JFrame}s.
+ * <p/>
+ * A good example for this would be for automated UI testing.
+ */
 public class AWTHelper {
 
     private static Robot robot;
@@ -40,6 +45,11 @@ public class AWTHelper {
         robot.mouseMove(x, y);
     }
 
+    public static Point getCursorPos() throws AWTException {
+        if (GraphicsEnvironment.isHeadless()) throw new HeadlessException("Attempted to get cursor location in headless environment.");
+        return MouseInfo.getPointerInfo().getLocation();
+    }
+
     /**
      * Simulates a left mouse click at the specified location.
      *
@@ -53,6 +63,16 @@ public class AWTHelper {
     }
 
     /**
+     * Simulates a left mouse click.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void LClick() throws AWTException {
+        LPress();
+        LRelease();
+    }
+
+    /**
      * Simulates a right mouse click at the specified location.
      *
      * @param x The x coordinate to click at.
@@ -62,6 +82,16 @@ public class AWTHelper {
     public static void RClick(int x, int y) throws AWTException {
         RPress(x, y);
         RRelease(x, y);
+    }
+
+    /**
+     * Simulates a right mouse click.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void RClick() throws AWTException {
+        RPress();
+        RRelease();
     }
 
     /**
@@ -78,6 +108,17 @@ public class AWTHelper {
 
 
     /**
+     * Simulates a middle mouse button click.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void MClick() throws AWTException {
+        MPress();
+        MRelease();
+    }
+
+
+    /**
      * Simulates a left mouse press at the specified location.
      *
      * @param x The x coordinate to press at.
@@ -86,6 +127,15 @@ public class AWTHelper {
      */
     public static void LPress(int x, int y) throws AWTException {
         moveCursor(x, y);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+    }
+
+    /**
+     * Simulates a left mouse press.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void LPress() throws AWTException {
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
     }
 
@@ -102,6 +152,15 @@ public class AWTHelper {
     }
 
     /**
+     * Simulates a right mouse press.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void RPress() throws AWTException {
+        robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+    }
+
+    /**
      * Simulates a middle mouse button press at the specified location.
      *
      * @param x The x coordinate to press at.
@@ -110,6 +169,15 @@ public class AWTHelper {
      */
     public static void MPress(int x, int y) throws AWTException {
         moveCursor(x, y);
+        robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+    }
+
+    /**
+     * Simulates a middle mouse button press.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void MPress() throws AWTException {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
     }
 
@@ -127,6 +195,15 @@ public class AWTHelper {
     }
 
     /**
+     * Simulates a left mouse release.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void LRelease() throws AWTException {
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+    }
+
+    /**
      * Simulates a right mouse release at the specified location.
      *
      * @param x The x coordinate to release at.
@@ -139,6 +216,15 @@ public class AWTHelper {
     }
 
     /**
+     * Simulates a right mouse release.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void RRelease() throws AWTException {
+        robot.mouseRelease(InputEvent.BUTTON2_MASK);
+    }
+
+    /**
      * Simulates a middle mouse button release at the specified location.
      *
      * @param x The x coordinate to release at.
@@ -147,6 +233,15 @@ public class AWTHelper {
      */
     public static void MRelease(int x, int y) throws AWTException {
         moveCursor(x, y);
+        robot.mouseRelease(InputEvent.BUTTON3_MASK);
+    }
+
+    /**
+     * Simulates a middle mouse button release.
+     *
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static void MRelease() throws AWTException {
         robot.mouseRelease(InputEvent.BUTTON3_MASK);
     }
 
@@ -167,6 +262,7 @@ public class AWTHelper {
     public static void keyRelease(int keycode) {
         robot.keyRelease(keycode);
     }
+
     /**
      * Presses a key type.
      *
