@@ -11,7 +11,7 @@ public class DelayedCode extends Thread {
 
     long d;
 
-    public DelayedCode(ActionListener listener, long delay) {
+    private DelayedCode(ActionListener listener, long delay) {
         l = listener;
         d = delay;
         setDaemon(false);
@@ -25,17 +25,25 @@ public class DelayedCode extends Thread {
             l.actionPerformed(null);
         } catch (InterruptedException e) {
             // JS's clearTimeout called.
-            return;
         }
     }
 
     /**
-     * Delays running of code, just like JavaScript's window#setTimeout
-     * @param listener The listener when it's time to run the code.
-     * @param delay The amount of time to delay in milliseconds.
-     * @return A stoppable thread, link JavaScript's window#clearTimeout
+     * Clears a delayed code before it's runned.
+     * @param code The {@link DelayedCode} to stop.
      */
-    public static Thread delayCode(ActionListener listener, long delay) {
+    public static void clearTimeout(DelayedCode code) {
+        code.interrupt();
+    }
+
+    /**
+     * Delays running of code, just like JavaScript's window#setTimeout
+     *
+     * @param listener The listener when it's time to run the code.
+     * @param delay    The amount of time to delay before running the code in milliseconds.
+     * @return A stoppable thread, just like the int returned in JavaScript's window#setTimeout
+     */
+    public static DelayedCode setTimeout(ActionListener listener, long delay) {
         return new DelayedCode(listener, delay);
     }
 
