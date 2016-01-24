@@ -17,7 +17,7 @@ public class RepeatedCodeExample {
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("RepeatedCodeExample");
-        final JTextArea text = new JTextArea("Timestamps go below...\nThe new timestamp will be printed every 1 second (1000ms)\n");
+        final JTextArea text = new JTextArea("Timestamps go below...\nA new timestamp will be printed every 1 second (1000ms)\n");
         final JScrollPane pane = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         final JButton stop = new JButton("Stop thread");
         final RepeatedCode[] code = new RepeatedCode[1];

@@ -1,7 +1,7 @@
 package com.jrutil.reflect;
 
 public class ClassFinder {
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings("unchecked")
     public static <T> ReflectedClass<T> getClass(String className) throws ClassNotFoundException {
         return new ReflectedClass<T>((Class<T>) Class.forName(className));
     }

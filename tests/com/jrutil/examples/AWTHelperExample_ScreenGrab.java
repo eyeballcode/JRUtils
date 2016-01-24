@@ -12,8 +12,7 @@ import static com.jrutil.DelayedCode.setTimeout;
 
 public class AWTHelperExample_ScreenGrab {
 
-    public static void main(String[] args) throws AWTException {
-        AWTHelper.setClipboardContents(null);
+    public static void main(String[] args) throws AWTException, ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
         final JFrame frame = new JFrame("Image Booth");
         final JLabel label = new JLabel("Waiting for grab call.");
         final JScrollPane pane = new JScrollPane(label, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

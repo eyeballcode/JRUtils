@@ -1,14 +1,12 @@
 package com.jrutil;
 
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  * A class for interacting with the system using UI events. Not restricted to only Java {@link javax.swing.JFrame}s.
@@ -25,27 +23,6 @@ public class AWTHelper {
         } catch (AWTException ignored) {
         }
     }
-
-    /**
-     * Sets the clipboard contents.
-     *
-     * @param contents The contents to set, or null to clear the clipboard.
-     */
-    public static void setClipboardContents(String contents) {
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        clipboard.setContents(new StringSelection(contents), null);
-    }
-
-    /**
-     * Gets the string contents of the clipboard
-     * @return The string contents, or null if it is empty or not a string.
-     * @throws IOException
-     * @throws UnsupportedFlavorException
-     */
-    public static String getStringClipboardContents() throws IOException, UnsupportedFlavorException {
-        return (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
-    }
-
     /**
      * Gets a screengrab of the screen.
      *

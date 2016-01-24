@@ -1,5 +1,7 @@
 package com.jrutil.examples;
 
+import com.jrutil.AWTHelper;
+import com.jrutil.datatransfer.ClipboardHelper;
 import com.jrutil.reflect.ClassFinder;
 import com.jrutil.reflect.ReflectedClass;
 import com.jrutil.reflect.ReflectedMethod;
@@ -7,12 +9,10 @@ import com.jrutil.reflect.ReflectedMethod;
 public class ReflectionExample {
 
     public static void main(String[] args) throws Exception {
-        ReflectedClass<?> clazz = ClassFinder.getClass(DummyClass.class.getName());
-        ReflectedMethod method = clazz.getMethodByBytecodeSignature("public print(Ljava/lang/String;)V");
-        clazz.getMethodByArgumentTypes(ClassFinder.getClass(String.class)); // Also works.
+        ReflectedClass<?> clazz = ClassFinder.getClass(DummyClass.class);
         System.out.println(clazz.toBytecodeSignatureString());
-        System.out.println(method.toBytecodeSignatureString());
-        method.invoke(new DummyClass(), "Hello");
+        for (ReflectedMethod method : clazz.getAllMethods())
+            System.out.println(method.toBytecodeSignatureString());
     }
 
 }

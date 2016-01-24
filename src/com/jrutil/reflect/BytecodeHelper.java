@@ -4,24 +4,35 @@ public class BytecodeHelper {
 
     protected static String getNameForType(String name) {
         StringBuilder out = new StringBuilder();
-        if (name.equals("int"))
-            out.append("I");
-        else if (name.equals("long"))
-            out.append("L");
-        else if (name.equals("short"))
-            out.append("S");
-        else if (name.equals("byte"))
-            out.append("B");
-        else if (name.equals("char"))
-            out.append("C");
-        else if (name.equals("float"))
-            out.append("F");
-        else if (name.equals("double"))
-            out.append("D");
-        else if (name.equals("boolean"))
-            out.append("Z");
-        else
-            out.append("L").append(name.replaceAll("\\.", "/")).append(";");
+        switch (name) {
+            case "int":
+                out.append("I");
+                break;
+            case "long":
+                out.append("L");
+                break;
+            case "short":
+                out.append("S");
+                break;
+            case "byte":
+                out.append("B");
+                break;
+            case "char":
+                out.append("C");
+                break;
+            case "float":
+                out.append("F");
+                break;
+            case "double":
+                out.append("D");
+                break;
+            case "boolean":
+                out.append("Z");
+                break;
+            default:
+                out.append("L").append(name.replaceAll("\\.", "/")).append(";");
+                break;
+        }
         return out.toString();
     }
 

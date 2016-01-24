@@ -57,7 +57,7 @@ public class JRTypingTextbox extends JTextField {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if (KeyUtil.isPrintableKey(e)) {
+                if (KeyUtil.isPrintableKey(e) || e.getKeyCode() == 8) {
                     thread.interrupt();
                     thread = new JRTypingTextboxThread(typingFinishedListeners, typingFinishedTime);
                     thread.start();
@@ -66,7 +66,7 @@ public class JRTypingTextbox extends JTextField {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (KeyUtil.isPrintableKey(e)) {
+                if (KeyUtil.isPrintableKey(e) || e.getKeyCode() == 8) {
                     thread.interrupt();
                     thread = new JRTypingTextboxThread(typingFinishedListeners, typingFinishedTime);
                 }

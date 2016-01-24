@@ -53,14 +53,22 @@ public class ReflectedMethod {
             out.append("final ");
         out.append(underlyingMethod.getName()).append("(");
         for (Class z : underlyingMethod.getParameterTypes()) {
-            out.append(BytecodeHelper.getNameForType(z.getName()));
+            if (z.getName().startsWith("["))
+                out.append(z.getName());
+            else
+                out.append(BytecodeHelper.getNameForType(z.getName()));
         }
         out.append(")");
         Class returnT = underlyingMethod.getReturnType();
         if (returnT.getName().equals("void"))
             out.append("V");
-        else
-            out.append(BytecodeHelper.getNameForType(returnT.getName()));
+        else {
+            if (returnT.getName().startsWith("["))
+                // It's an array!
+                out.append(returnT.getName());
+            else
+                out.append(BytecodeHelper.getNameForType(returnT.getName()));
+        }
         return out.toString();
     }
 
