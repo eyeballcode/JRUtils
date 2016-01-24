@@ -16,7 +16,7 @@ public class RepeatedCodeExample {
 
     public static void main(String[] args) {
 
-        JFrame f = new JFrame("RepeatedCodeExample");
+        JFrame frame = new JFrame("RepeatedCodeExample");
         final JTextArea text = new JTextArea("Timestamps go below...\nThe new timestamp will be printed every 1 second (1000ms)\n");
         final JScrollPane pane = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         final JButton stop = new JButton("Stop thread");
@@ -35,17 +35,17 @@ public class RepeatedCodeExample {
             }
         }, 1000);
 
-        f.add(pane, BorderLayout.CENTER);
-        f.add(stop, BorderLayout.SOUTH);
+        frame.add(pane, BorderLayout.CENTER);
+        frame.add(stop, BorderLayout.SOUTH);
 
         text.setEditable(false);
 
         pane.setPreferredSize(new Dimension(500, 100));
 
-        f.pack();
-        f.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - f.getWidth() / 2,
-                Toolkit.getDefaultToolkit().getScreenSize().height / 2 - f.getHeight() / 2);
-        f.setVisible(true);
+        frame.pack();
+        frame.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - frame.getWidth() / 2,
+                Toolkit.getDefaultToolkit().getScreenSize().height / 2 - frame.getHeight() / 2);
+        frame.setVisible(true);
 
         stop.addActionListener(new ActionListener() {
             @Override
@@ -54,7 +54,7 @@ public class RepeatedCodeExample {
             }
         });
 
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 

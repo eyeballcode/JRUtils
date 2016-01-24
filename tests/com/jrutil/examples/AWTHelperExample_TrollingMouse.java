@@ -13,14 +13,14 @@ import static com.jrutil.RepeatedCode.setInterval;
 public class AWTHelperExample_TrollingMouse {
 
     public static void main(String[] args) throws AWTException {
-        JFrame f = new JFrame();
-        f.setLocation(0, 0);
-        f.setUndecorated(true);
-        f.setPreferredSize(new Dimension(0, 0));
-        f.setAlwaysOnTop(true);
-        f.setOpacity(0f);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        JFrame frame = new JFrame();
+        frame.setLocation(0, 0);
+        frame.setUndecorated(true);
+        frame.setPreferredSize(new Dimension(0, 0));
+        frame.setAlwaysOnTop(true);
+        frame.setOpacity(0f);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         final int width = Toolkit.getDefaultToolkit().getScreenSize().width,
                 height = Toolkit.getDefaultToolkit().getScreenSize().height;

@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class JRTypingTextbox extends JTextField {
 
-    transient List<TypingFinishedListener> typingFinishedListeners = new LinkedList<>();
+    transient List<TypingFinishedListener> typingFinishedListeners = new LinkedList<TypingFinishedListener>();
 
     public JRTypingTextbox() {
         this(null, null, 0);

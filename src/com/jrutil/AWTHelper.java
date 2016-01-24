@@ -1,9 +1,14 @@
 package com.jrutil;
 
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * A class for interacting with the system using UI events. Not restricted to only Java {@link javax.swing.JFrame}s.
@@ -19,6 +24,26 @@ public class AWTHelper {
             robot = new Robot();
         } catch (AWTException ignored) {
         }
+    }
+
+    /**
+     * Sets the clipboard contents.
+     *
+     * @param contents The contents to set, or null to clear the clipboard.
+     */
+    public static void setClipboardContents(String contents) {
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(new StringSelection(contents), null);
+    }
+
+    /**
+     * Gets the string contents of the clipboard
+     * @return The string contents, or null if it is empty or not a string.
+     * @throws IOException
+     * @throws UnsupportedFlavorException
+     */
+    public static String getStringClipboardContents() throws IOException, UnsupportedFlavorException {
+        return (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
     }
 
     /**
@@ -45,8 +70,15 @@ public class AWTHelper {
         robot.mouseMove(x, y);
     }
 
+    /**
+     * Gets the cursor position
+     *
+     * @return A {@link Point} which contains the cursor's location.
+     * @throws AWTException
+     */
     public static Point getCursorPos() throws AWTException {
-        if (GraphicsEnvironment.isHeadless()) throw new HeadlessException("Attempted to get cursor location in headless environment.");
+        if (GraphicsEnvironment.isHeadless())
+            throw new HeadlessException("Attempted to get cursor location in headless environment.");
         return MouseInfo.getPointerInfo().getLocation();
     }
 

@@ -21,11 +21,11 @@ public class LockableHashMapsExample {
         // LockedHashMap example
         {
             System.out.println("LockedHashMap Example:");
-            HashMap<String, Integer> numbersMap = new HashMap<>();
+            HashMap<String, Integer> numbersMap = new HashMap<String, Integer>();
             for (int i = 0; i < 10; i++) numbersMap.put(String.valueOf(i), i);
             System.out.println("    Existing HashMap:");
             System.out.println("    " + numbersMap.toString());
-            LockedHashMap<String, Integer> lockedHashMap = new LockedHashMap<>(numbersMap);
+            LockedHashMap<String, Integer> lockedHashMap = new LockedHashMap<String, Integer>(numbersMap);
             System.out.println("    LockedHashMap before attempted modifications");
             System.out.println("    " + lockedHashMap);
             lockedHashMap.put("11", 11);
@@ -37,7 +37,7 @@ public class LockableHashMapsExample {
         //LockableHashMap example
         {
             System.out.println("LockableHashMap Example:");
-            LockableHashMap<String, Integer> numbersMap = new LockableHashMap<>();
+            LockableHashMap<String, Integer> numbersMap = new LockableHashMap<String, Integer>();
             for (int i = 0; i < 10; i++) numbersMap.put(String.valueOf(i), i);
             System.out.println("    First Numbers Map before locking");
             System.out.println("    " + numbersMap);

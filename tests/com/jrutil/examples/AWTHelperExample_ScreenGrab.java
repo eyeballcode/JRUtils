@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import static com.jrutil.DelayedCode.setTimeout;
@@ -14,6 +13,7 @@ import static com.jrutil.DelayedCode.setTimeout;
 public class AWTHelperExample_ScreenGrab {
 
     public static void main(String[] args) throws AWTException {
+        AWTHelper.setClipboardContents(null);
         final JFrame frame = new JFrame("Image Booth");
         final JLabel label = new JLabel("Waiting for grab call.");
         final JScrollPane pane = new JScrollPane(label, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

@@ -10,7 +10,7 @@ public class ColorPrinter {
      * Do note that <code>italic</code> and <code>strike</code> may not be available on all systems. One such system would be IntelliJ.
      *
      */
-    public static final LockableHashMap<String, Integer> formatMap = new LockableHashMap<>();
+    public static final LockableHashMap<String, Integer> formatMap = new LockableHashMap<String, Integer>();
 
     /**
      * The template for the color output in linux.

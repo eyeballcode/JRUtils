@@ -1,12 +1,12 @@
 package com.jrutil.reflect;
 
 public class ClassFinder {
-
-    public static ReflectedClass<?> getClass(String className) throws ClassNotFoundException {
-        return new ReflectedClass<>(Class.forName(className));
+    @SuppressWarnings("rawtypes")
+    public static <T> ReflectedClass<T> getClass(String className) throws ClassNotFoundException {
+        return new ReflectedClass<T>((Class<T>) Class.forName(className));
     }
 
-    public static ReflectedClass getClass(Class<?> baseClass) {
-        return new ReflectedClass<>(baseClass);
+    public static <T> ReflectedClass<T> getClass(Class<T> baseClass) {
+        return new ReflectedClass<T>(baseClass);
     }
 }
