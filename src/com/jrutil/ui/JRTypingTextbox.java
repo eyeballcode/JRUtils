@@ -33,6 +33,7 @@ import java.util.List;
 public class JRTypingTextbox extends JTextField {
 
     transient List<TypingFinishedListener> typingFinishedListeners = new LinkedList<TypingFinishedListener>();
+    int typingFinishedTime = 500;
 
     public JRTypingTextbox() {
         this(null, null, 0);
@@ -74,7 +75,14 @@ public class JRTypingTextbox extends JTextField {
         });
     }
 
-    int typingFinishedTime = 500;
+    /**
+     * Gets the timeout to trigger the {@link com.jrutil.ui.event.TypingEvent}
+     *
+     * @return The timeout to trigger the event, in milliseconds. If {@link #setTypingFinishedTime(int)} was not called earlier, the value defaults to 500 milliseconds (Half a second)
+     */
+    public int getTypingFinishedTime() {
+        return typingFinishedTime;
+    }
 
     /**
      * Sets the timeout to trigger the {@link com.jrutil.ui.event.TypingEvent}.
@@ -83,15 +91,6 @@ public class JRTypingTextbox extends JTextField {
      */
     public void setTypingFinishedTime(int typingFinishedTime) {
         this.typingFinishedTime = typingFinishedTime;
-    }
-
-    /**
-     * Gets the timeout to trigger the {@link com.jrutil.ui.event.TypingEvent}
-     *
-     * @return The timeout to trigger the event, in milliseconds. If {@link #setTypingFinishedTime(int)} was not called earlier, the value defaults to 500 milliseconds (Half a second)
-     */
-    public int getTypingFinishedTime() {
-        return typingFinishedTime;
     }
 
     /**
@@ -123,7 +122,6 @@ public class JRTypingTextbox extends JTextField {
     }
 
     /**
-     *
      * Gets an array {@link TypingFinishedListener} that will be run when the user finishes typing.
      *
      * @return The array of {@link TypingFinishedListener}
@@ -135,7 +133,6 @@ public class JRTypingTextbox extends JTextField {
     public TypingFinishedListener[] getTypingFinishedListners() {
         return typingFinishedListeners.toArray(new TypingFinishedListener[typingFinishedListeners.size()]);
     }
-
 
 
 }

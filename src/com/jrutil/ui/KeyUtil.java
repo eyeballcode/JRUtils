@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 
 public class KeyUtil {
     /**
-     *
      * Checks if a key is printable
      *
      * @param e The KeyEvent to check it's key

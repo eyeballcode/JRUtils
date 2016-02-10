@@ -18,21 +18,9 @@ public class RepeatedCode extends Thread {
         start();
     }
 
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                Thread.sleep(d);
-                l.actionPerformed(null);
-            } catch (InterruptedException e) {
-                // JS's clearInterval called.
-                return;
-            }
-        }
-    }
-
     /**
      * Stops a code loop before.
+     *
      * @param code The {@link RepeatedCode} to stop.
      */
     public static void clearInterval(RepeatedCode code) {
@@ -48,6 +36,19 @@ public class RepeatedCode extends Thread {
      */
     public static RepeatedCode setInterval(ActionListener listener, long delay) {
         return new RepeatedCode(listener, delay);
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Thread.sleep(d);
+                l.actionPerformed(null);
+            } catch (InterruptedException e) {
+                // JS's clearInterval called.
+                return;
+            }
+        }
     }
 
 }

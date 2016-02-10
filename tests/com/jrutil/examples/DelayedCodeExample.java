@@ -2,10 +2,10 @@ package com.jrutil.examples;
 
 import com.jrutil.DelayedCode;
 
-import static com.jrutil.DelayedCode.setTimeout;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static com.jrutil.DelayedCode.setTimeout;
 
 
 public class DelayedCodeExample {

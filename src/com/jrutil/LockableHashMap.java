@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * A {@link HashMap} that can be locked, but cannot be unlocked.
  * Good for exposing HashMaps that should not be modified after class initialization
  *

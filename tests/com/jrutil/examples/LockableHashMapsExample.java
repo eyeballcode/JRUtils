@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 /**
  * An example to show the usages of {@link LockedHashMap} and {@link LockableHashMap}s.
- *
+ * <p/>
  * It also shows their differences, and a bit of {@link TerminalHelper}. See a {@link TerminalHelper} example {@linkplain TerminalHelperExample here}
  *
  * @see LockedHashMap

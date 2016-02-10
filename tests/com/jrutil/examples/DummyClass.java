@@ -20,12 +20,12 @@ public class DummyClass {
         return new BufferedReader(new InputStreamReader(System.in)).readLine();
     }
 
-    public String[] getNames(){
+    public String[] getNames() {
         return new String[]{"Hello, Hello"};
     }
 
     public JPanel[][] getBoard() {
-        return new JPanel[][] {};
+        return new JPanel[][]{};
     }
 
 }

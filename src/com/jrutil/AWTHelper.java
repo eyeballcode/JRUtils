@@ -1,12 +1,9 @@
 package com.jrutil;
 
 import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.ArrayList;
 
 /**
  * A class for interacting with the system using UI events. Not restricted to only Java {@link javax.swing.JFrame}s.
@@ -23,6 +20,7 @@ public class AWTHelper {
         } catch (AWTException ignored) {
         }
     }
+
     /**
      * Gets a screengrab of the screen.
      *

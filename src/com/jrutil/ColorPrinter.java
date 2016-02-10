@@ -6,9 +6,8 @@ package com.jrutil;
 public class ColorPrinter {
     /**
      * A {@link LockableHashMap} that contains all of the formats, and is locked.
-     *
+     * <p/>
      * Do note that <code>italic</code> and <code>strike</code> may not be available on all systems. One such system would be IntelliJ.
-     *
      */
     public static final LockableHashMap<String, Integer> formatMap = new LockableHashMap<String, Integer>();
 

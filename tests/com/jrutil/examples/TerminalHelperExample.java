@@ -25,7 +25,7 @@ public class TerminalHelperExample {
             System.out.println("    Password reading not supported!");
         }
         System.out.println("Terminal / Console width: ");
-            System.out.println("    " + TerminalHelper.getTerminalWidth());
+        System.out.println("    " + TerminalHelper.getTerminalWidth());
     }
 
 }

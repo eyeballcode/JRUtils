@@ -18,18 +18,9 @@ public class DelayedCode extends Thread {
         start();
     }
 
-    @Override
-    public void run() {
-        try {
-            Thread.sleep(d);
-            l.actionPerformed(null);
-        } catch (InterruptedException e) {
-            // JS's clearTimeout called.
-        }
-    }
-
     /**
      * Clears a delayed code before it's runned.
+     *
      * @param code The {@link DelayedCode} to stop.
      */
     public static void clearTimeout(DelayedCode code) {
@@ -45,6 +36,16 @@ public class DelayedCode extends Thread {
      */
     public static DelayedCode setTimeout(ActionListener listener, long delay) {
         return new DelayedCode(listener, delay);
+    }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(d);
+            l.actionPerformed(null);
+        } catch (InterruptedException e) {
+            // JS's clearTimeout called.
+        }
     }
 
 }

@@ -8,12 +8,6 @@ import java.util.ArrayList;
 
 public class ClipboardHelper {
 
-//    public static native void setStringClipboardContents(String contents);
-//
-//    public static native void setImageClipboardContents(BufferedImage contents);
-//
-//    public static native void setFileClipboardContents(File contents);
-
     /**
      * Gets the string contents of the clipboard
      *

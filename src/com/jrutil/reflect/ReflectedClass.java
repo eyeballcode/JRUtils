@@ -21,8 +21,8 @@ public class ReflectedClass<T> {
 
     /**
      * Gets all methods under the class.
-     * @return An array of methods that this class has.
      *
+     * @return An array of methods that this class has.
      * @see ReflectedMethod
      */
     public ReflectedMethod[] getAllMethods() {
@@ -35,9 +35,9 @@ public class ReflectedClass<T> {
 
     /**
      * Gets a method in this class by it's bytecode signature
+     *
      * @param signature The bytecode signature
      * @return The method, or null if not found.
-     *
      * @see ReflectedMethod
      */
     public ReflectedMethod getMethodByBytecodeSignature(String signature) {
@@ -50,6 +50,7 @@ public class ReflectedClass<T> {
 
     /**
      * Gets a method in this class by it's argument types.
+     *
      * @param types The argument types.
      * @return The method, or null if not found.
      */

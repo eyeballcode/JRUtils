@@ -135,6 +135,32 @@ public class TerminalHelper {
         return Boolean.parseBoolean(read(prefix));
     }
 
+
+    /**
+     * Reads a double from the console.
+     *
+     * @return The double
+     * @throws IOException           If an error occurred while reading from {@link System#in}.
+     * @throws NumberFormatException If the input is not a valid double.
+     */
+    public static double readDouble() throws IOException, NumberFormatException {
+        return readDouble("");
+    }
+
+
+    /**
+     * Reads a double from the console, with a custom prefix.
+     *
+     * @param prefix The prefix
+     * @return The double
+     * @throws IOException           If an error occurred while reading from {@link System#in}.
+     * @throws NumberFormatException If the input is not a valid double.
+     */
+    public static double readDouble(String prefix) throws IOException, NumberFormatException {
+        return Double.parseDouble(read(prefix));
+    }
+
+
     /**
      * Reads a float from the console.
      *

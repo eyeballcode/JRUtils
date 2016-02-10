@@ -1,7 +1,5 @@
 package com.jrutil.examples;
 
-import com.jrutil.AWTHelper;
-import com.jrutil.datatransfer.ClipboardHelper;
 import com.jrutil.reflect.ClassFinder;
 import com.jrutil.reflect.ReflectedClass;
 import com.jrutil.reflect.ReflectedMethod;
