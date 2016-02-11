@@ -5,6 +5,7 @@ What's this?
 It's an API for Java that hopes to clean and dry your code. Just see this:
 
 Original:
+
     System.out.print("Number of decimal places: ");
     int numberOfDP = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
     System.out.print("Number to round: ");
@@ -12,17 +13,17 @@ Original:
     System.out.println(MathHelper.roundDoubleToXDP(number, numberOfDP));
 
 With JRUtil:
+
     int numberOfDP = TerminalHelper.readInt("Number of decimal places: ");
     double number = TerminalHelper.readDouble("Number to round: ");
     System.out.println(MathHelper.roundDoubleToXDP(number, numberOfDP));
 
 Or maybe, random numbers:
-    int randomNumber = MathHelper.randomInt(1, TerminalHelper.readInt("What's the largest value for the random number? "));
 
+    int randomNumber = MathHelper.randomInt(1, TerminalHelper.readInt("What's the largest value for the random number? "));
 It also gives you utility methods such as this:
 
     BufferedImage screenGrab = AWTHelper.screenGrab();
-
 Or maybe, to click and move the mouse?
 
     AWTHelper.moveCursor(Toolkit.getDefaultToolkit().getScreenSize().width / 2, Toolkit.getDefaultToolkit().getScreenSize().height / 2);
