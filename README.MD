@@ -107,4 +107,4 @@ There. After you finish typing, it prints the text to the terminal.
 
 TODO FOR THIS PROJECT:
 
-[ ]: JRTypingTextBox TypingListener#TypingStart(TypingEvent) to be done up.
+- [ ] JRTypingTextBox TypingListener#TypingStart(TypingEvent) to be done up.
