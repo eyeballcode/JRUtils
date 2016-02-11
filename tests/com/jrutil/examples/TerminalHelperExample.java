@@ -1,8 +1,11 @@
 package com.jrutil.examples;
 
 import com.jrutil.TerminalHelper;
+import com.jrutil.math.MathHelper;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * An example that shows how to get the console's width.
@@ -10,6 +13,17 @@ import java.io.IOException;
  * @see TerminalHelper
  */
 public class TerminalHelperExample {
+
+    static {
+        try {
+            System.out.print("Number of decimal places: ");
+            int numberOfDP = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
+            System.out.print("Number to round: ");
+            double number = Double.parseDouble(new BufferedReader(new InputStreamReader(System.in)).readLine());
+            System.out.println(MathHelper.roundDoubleToXDP(number, numberOfDP));
+        } catch (IOException ignored) {
+        }
+    }
 
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("TerminalHelper#read variants");

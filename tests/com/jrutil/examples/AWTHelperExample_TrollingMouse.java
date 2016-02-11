@@ -1,12 +1,13 @@
 package com.jrutil.examples;
 
 import com.jrutil.AWTHelper;
-import com.jrutil.RandomGen;
+import com.jrutil.math.MathHelper;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import static com.jrutil.RepeatedCode.setInterval;
 
@@ -30,8 +31,8 @@ public class AWTHelperExample_TrollingMouse {
         setInterval(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int nX = RandomGen.randomInt(x[0] - 1, x[0] + 1);
-                int nY = RandomGen.randomInt(y[0] - 1, y[0] + 1);
+                int nX = MathHelper.randomInt(x[0] - 1, x[0] + 1);
+                int nY = MathHelper.randomInt(y[0] - 1, y[0] + 1);
                 try {
                     AWTHelper.moveCursor(x[0], y[0]);
                 } catch (AWTException ignored) {

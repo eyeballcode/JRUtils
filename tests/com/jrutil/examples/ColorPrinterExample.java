@@ -1,6 +1,9 @@
 package com.jrutil.examples;
 
 import com.jrutil.ColorPrinter;
+import com.jrutil.TerminalHelper;
+
+import java.io.IOException;
 
 /**
  * An example to show off the {@link ColorPrinter} class.
@@ -12,7 +15,12 @@ import com.jrutil.ColorPrinter;
  */
 public class ColorPrinterExample {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        ColorPrinter.println("%bold%%green%Success!");
+        ColorPrinter.print("%red%Build failed. %reset%Continue? %underline%");
+        String s = TerminalHelper.read();
+
         ColorPrinter.println("%bold%%yellow%Hello world!");
         ColorPrinter.println("%yellow%Not so bold...");
         ColorPrinter.println("%bold%%green%Success!");

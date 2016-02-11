@@ -6,11 +6,11 @@ import java.util.List;
 
 class JRTypingTextboxThread extends Thread {
 
-    List<TypingFinishedListener> typingFinishedListeners;
+    List<TypingListener> typingFinishedListeners;
 
     int typingFinishedTime;
 
-    JRTypingTextboxThread(List<TypingFinishedListener> listeners, int typingFinishedTime) {
+    JRTypingTextboxThread(List<TypingListener> listeners, int typingFinishedTime) {
         typingFinishedListeners = listeners;
         this.typingFinishedTime = typingFinishedTime;
     }
@@ -24,7 +24,7 @@ class JRTypingTextboxThread extends Thread {
             // User started typing again, cancel it.
             return;
         }
-        for (TypingFinishedListener listener : typingFinishedListeners)
+        for (TypingListener listener : typingFinishedListeners)
             listener.typingFinished(new TypingEvent());
     }
 }

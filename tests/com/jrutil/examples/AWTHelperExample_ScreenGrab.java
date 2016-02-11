@@ -25,7 +25,7 @@ public class AWTHelperExample_ScreenGrab {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
-                            BufferedImage grab = AWTHelper.screenGrab(null);
+                            BufferedImage grab = AWTHelper.screenGrab();
                             label.setIcon(new ImageIcon(grab));
                             label.setText("");
                             pane.setPreferredSize(new Dimension(grab.getWidth() / 2, grab.getHeight() / 2));

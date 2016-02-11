@@ -209,5 +209,4 @@ public class TerminalHelper {
         return Long.parseLong(read(prefix));
     }
 
-
 }

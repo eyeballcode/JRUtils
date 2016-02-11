@@ -24,7 +24,7 @@ public class AWTHelper {
     /**
      * Gets a screengrab of the screen.
      *
-     * @param rectangle The {@link Rectangle} to capture, or null for the while screen.
+     * @param rectangle The {@link Rectangle} to capture, or null for the whole screen.
      * @return A {@link BufferedImage} that contains the screengrab.
      * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
      */
@@ -32,6 +32,16 @@ public class AWTHelper {
         if (rectangle == null)
             rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         return robot.createScreenCapture(rectangle);
+    }
+
+    /**
+     * Gets a screengrab of the entire screen.
+     *
+     * @return The {@link BufferedImage} that contains the screengrab.
+     * @throws AWTException If an {@link AWTException} occurred. One example would be a {@link HeadlessException}
+     */
+    public static BufferedImage screenGrab() throws AWTException {
+        return screenGrab(null);
     }
 
     /**

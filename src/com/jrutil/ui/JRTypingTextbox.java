@@ -1,5 +1,7 @@
 package com.jrutil.ui;
 
+import com.jrutil.ui.event.TypingEvent;
+
 import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.event.KeyAdapter;
@@ -14,7 +16,7 @@ import java.util.List;
  * <p/>
  * <pre>
  *      JRTypingTextbox typingTextbox = new JRTypingTextbox();
- *      typingTextbox.addTypingFinishedListener(new TypingFinishedListener() {
+ *      typingTextbox.addTypingListener(new TypingListener() {
  *           \@Override
  *           public void typingFinished(TypingEvent event) {
  *               // Prints the contents of the textbox to the console.
@@ -32,8 +34,10 @@ import java.util.List;
  */
 public class JRTypingTextbox extends JTextField {
 
-    transient List<TypingFinishedListener> typingFinishedListeners = new LinkedList<TypingFinishedListener>();
+    transient List<TypingListener> TypingListeners = new LinkedList<TypingListener>();
     int typingFinishedTime = 500;
+
+    private JRTypingTextboxThread thread = new JRTypingTextboxThread(TypingListeners, typingFinishedTime);
 
     public JRTypingTextbox() {
         this(null, null, 0);
@@ -51,16 +55,17 @@ public class JRTypingTextbox extends JTextField {
         this(null, text, columns);
     }
 
-    public JRTypingTextbox(Document document, String text, int columns) {
+    public JRTypingTextbox(Document document, final String text, int columns) {
         super(document, text, columns);
+
         addKeyListener(new KeyAdapter() {
-            JRTypingTextboxThread thread = new JRTypingTextboxThread(typingFinishedListeners, typingFinishedTime);
+            int typeCount = 0;
 
             @Override
             public void keyReleased(KeyEvent e) {
                 if (KeyUtil.isPrintableKey(e) || e.getKeyCode() == 8) {
                     thread.interrupt();
-                    thread = new JRTypingTextboxThread(typingFinishedListeners, typingFinishedTime);
+                    thread = new JRTypingTextboxThread(TypingListeners, typingFinishedTime);
                     thread.start();
                 }
             }
@@ -69,7 +74,7 @@ public class JRTypingTextbox extends JTextField {
             public void keyPressed(KeyEvent e) {
                 if (KeyUtil.isPrintableKey(e) || e.getKeyCode() == 8) {
                     thread.interrupt();
-                    thread = new JRTypingTextboxThread(typingFinishedListeners, typingFinishedTime);
+                    thread = new JRTypingTextboxThread(TypingListeners, typingFinishedTime);
                 }
             }
         });
@@ -94,44 +99,45 @@ public class JRTypingTextbox extends JTextField {
     }
 
     /**
-     * Adds a {@link TypingFinishedListener} to run when user typing is complete.
+     * Adds a {@link TypingListener} to run when user typing is complete.
      *
-     * @param listener The {@link TypingFinishedListener} to attach.
-     * @see TypingFinishedListener
+     * @param listener The {@link TypingListener} to attach.
+     * @see TypingListener
      * @see com.jrutil.ui.event.TypingEvent
-     * @see #removeTypingFinishedListner(TypingFinishedListener)
-     * @see #getTypingFinishedListners()
+     * @see #removeTypingListner(TypingListener)
+     * @see #getTypingListners()
      */
-    public synchronized void addTypingFinishedListener(TypingFinishedListener listener) {
+    public synchronized void addTypingListener(TypingListener listener) {
         if (listener == null) return;
-        typingFinishedListeners.add(listener);
+        TypingListeners.add(listener);
     }
 
     /**
-     * Removes a {@link TypingFinishedListener} from the list of {@link TypingFinishedListener}s to run when user typing is complete.
+     * Removes a {@link TypingListener} from the list of {@link TypingListener}s to run when user typing is complete.
      *
-     * @param listener The {@link TypingFinishedListener} to remove.
-     * @see TypingFinishedListener
+     * @param listener The {@link TypingListener} to remove.
+     * @see TypingListener
      * @see com.jrutil.ui.event.TypingEvent
-     * @see #addTypingFinishedListener(TypingFinishedListener)
-     * @see #getTypingFinishedListners()
+     * @see #addTypingListener(TypingListener)
+     * @see #getTypingListners()
      */
-    public synchronized void removeTypingFinishedListner(TypingFinishedListener listener) {
+    public synchronized void removeTypingListner(TypingListener listener) {
         if (listener == null) return;
-        typingFinishedListeners.remove(listener);
+        if (TypingListeners.size() == 1) return;
+        TypingListeners.remove(listener);
     }
 
     /**
-     * Gets an array {@link TypingFinishedListener} that will be run when the user finishes typing.
+     * Gets an array {@link TypingListener} that will be run when the user finishes typing.
      *
-     * @return The array of {@link TypingFinishedListener}
-     * @see TypingFinishedListener
+     * @return The array of {@link TypingListener}
+     * @see TypingListener
      * @see com.jrutil.ui.event.TypingEvent
-     * @see #addTypingFinishedListener(TypingFinishedListener)
-     * @see #removeTypingFinishedListner(TypingFinishedListener)
+     * @see #addTypingListener(TypingListener)
+     * @see #removeTypingListner(TypingListener)
      */
-    public TypingFinishedListener[] getTypingFinishedListners() {
-        return typingFinishedListeners.toArray(new TypingFinishedListener[typingFinishedListeners.size()]);
+    public TypingListener[] getTypingListners() {
+        return TypingListeners.toArray(new TypingListener[TypingListeners.size()]);
     }
 
 

@@ -1,7 +1,7 @@
 package com.jrutil.examples;
 
 import com.jrutil.ui.JRTypingTextbox;
-import com.jrutil.ui.TypingFinishedListener;
+import com.jrutil.ui.TypingListener;
 import com.jrutil.ui.event.TypingEvent;
 
 import javax.swing.*;
@@ -16,10 +16,16 @@ public class JRTypingTextboxExample {
 
     public static void main(String[] args) {
         final JRTypingTextbox typingTextbox = new JRTypingTextbox();
-        typingTextbox.addTypingFinishedListener(new TypingFinishedListener() {
+        typingTextbox.addTypingListener(new TypingListener() {
             @Override
             public void typingFinished(TypingEvent event) {
                 System.out.println(typingTextbox.getText());
+            }
+
+            @Override
+            public void typingStarted(TypingEvent event) {
+                // TODO NYI
+                System.out.println("Typing start");
             }
         });
         typingTextbox.setPreferredSize(new Dimension(100, 30));
